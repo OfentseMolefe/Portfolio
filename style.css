@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    font-family: "Poppins", sans-serif;
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 10%;
+}
+
+.logo {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 26px;
+    cursor: default;
+    animation: slideLeft 1s ease forwards;
+    opacity: 0;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0px 16px;
+    font-weight: 600;
+    transition: 0.3s all;
+    animation: navManu 1s ease forwards;
+    animation-delay: calc(0.2s * var(--i));
+    opacity: 0;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: aqua;
+}
+
+.intro-container {
+    display: flex;
+    padding: 25px 12%;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-side h3 {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 10px 0;
+    letter-spacing: 1px;
+}
+
+.info-side h1 {
+    font-size: 80px;
+    font-weight: 600;
+    letter-spacing: 1px; 
+}
+
+.info-side h3 span {
+    color: aqua;
+}
+
+p {
+    font-size: 20px;
+    line-height: 28px;
+    margin: 20px 0px 40px 0px;
+}
+
+.home-icon {
+    position: relative;
+    width: 480px;
+}
+
+img {
+    position: flex;
+    border-radius: 700px;
+}
+
+i {
+    font-size: x-large;
+    border: 2px solid #0ef;
+    color: white;
+    padding: 18px;
+    border-radius: 50px;
+    margin: 4px 10px;
+    transition: 0.3s all;
+}
+
+i:hover {
+    box-shadow: 0 0 20px #0ef;
+    background-color: rgb(27, 76, 80);
+}
+
+button {
+    margin-top: 50px;
+    background-color: #0ef;
+    padding: 20px 70px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 0 15px #0ef;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: none;
+}
+
+/* animation */
+@keyframes slideLeft {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes navManu {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
