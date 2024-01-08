@@ -11,6 +11,7 @@ body {
     background-color: rgb(0, 0, 0);
     font-family: "Poppins", sans-serif;
     color: white;
+  
 }
 
 .header {
@@ -46,25 +47,26 @@ body {
     color: aqua;
 }
 
-#menu{
+#menu {
     font-size: xx-large;
     font-weight: 700;
     position: fixed;
-    top: 1rem ;
-    right :2rem;
+    top: 1rem;
+    right: 2rem;
     color: #fff;
     cursor: pointer;
     padding: 1rem 1.5rem;
     z-index: 1000;
     display: none;
 }
-#menu:hover{
-  color: #0ef;
+
+#menu:hover {
+    color: #0ef;
 }
 
 .intro-container {
     display: flex;
-    padding: 25px 12%;
+    padding: 10px 8%;
     align-items: center;
     justify-content: center;
 }
@@ -72,39 +74,45 @@ body {
 .info-side h3 {
     font-size: 30px;
     font-weight: 800;
-    margin: 10px 0;
     letter-spacing: 1px;
 }
 
 .info-side h1 {
-    font-size: 80px;
+    font-size: 70px;
     font-weight: 600;
-    letter-spacing: 1px; 
+    letter-spacing: 1px;
 }
 
 .info-side h3 span {
     color: aqua;
 }
-.slide1 , h3 ,button{
-     animation: slide1 1s ease forwards;
+
+.slide1,
+h3,
+button {
+    animation: slide1 1s ease forwards;
     animation-delay: 1.1s;
     opacity: 0;
 }
-.slide2,img ,.mediaIcon ,p {
+
+.slide2,
+img,
+p {
     animation: slide2 1s ease forwards;
-   animation-delay: 1.1s;
-   opacity: 0;
+    animation-delay: 1.1s;
+    opacity: 0;
 }
 
 p {
     font-size: 20px;
     line-height: 28px;
-    margin: 20px 0px 40px 0px;
+    margin: 10px 0px 40px 0px;
 }
 
 .home-icon {
-    position: relative;
-    width: 410px;
+    animation: home-icon 1s ease forwards;
+    animation-delay: 1.1s;
+    opacity: 0;
 }
 
 img {
@@ -116,7 +124,7 @@ img {
     border-radius: 600px;
 }
 
-i {
+.mediaIcon i {
     display: inline-block;
     font-size: x-large;
     border: 2px solid #0ef;
@@ -125,6 +133,9 @@ i {
     border-radius: 60px;
     margin: 4px 10px;
     transition: 0.3s all;
+    animation: navManu 1.3s ease forwards;
+    animation-delay: calc(0.2s * var(--i));
+    opacity: 0;
 }
 
 i:hover {
@@ -133,7 +144,7 @@ i:hover {
 }
 
 button {
-    margin-top: 50px;
+    margin-top: 30px;
     background-color: #0ef;
     padding: 20px 70px;
     border: none;
@@ -142,6 +153,8 @@ button {
     font-weight: 700;
     box-shadow: 0 0 15px #0ef;
     transition: 0.3s;
+    font-size: 20px;
+    margin-left: 20px;
 }
 
 button:hover {
@@ -172,6 +185,7 @@ button:hover {
         opacity: 1;
     }
 }
+
 @keyframes slide1 {
     0% {
         transform: translateX(-100px);
@@ -183,6 +197,7 @@ button:hover {
         opacity: 1;
     }
 }
+
 @keyframes slide2 {
     0% {
         transform: translateY(100px);
@@ -194,17 +209,17 @@ button:hover {
         opacity: 1;
     }
 }
+
+@keyframes home-icon {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 /*add the responsive*/
-@media (min-width:100px){
-    #main{
-       display: none;
-    }
-
-}
-@media (max-width:100px){
-    navbar{
-        display: none;
-    }
-    
-}
-

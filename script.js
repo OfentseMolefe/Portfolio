@@ -3,5 +3,4 @@ let type = new Typed('.changing-text', {
     typeSpeed: 50,
     backSpeed: 50,
     loop:true
-
 });
