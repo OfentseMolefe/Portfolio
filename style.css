@@ -46,6 +46,22 @@ body {
     color: aqua;
 }
 
+#menu{
+    font-size: xx-large;
+    font-weight: 700;
+    position: fixed;
+    top: 1rem ;
+    right :2rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    z-index: 1000;
+    display: none;
+}
+#menu:hover{
+  color: #0ef;
+}
+
 .intro-container {
     display: flex;
     padding: 25px 12%;
@@ -178,3 +194,17 @@ button:hover {
         opacity: 1;
     }
 }
+/*add the responsive*/
+@media (min-width:100px){
+    #main{
+       display: none;
+    }
+
+}
+@media (max-width:100px){
+    navbar{
+        display: none;
+    }
+    
+}
+
