@@ -1,5 +1,5 @@
 let type = new Typed('.changing-text', {
-    strings: ['','Student','','Java Developer','','', 'Back-end developer'],
+    strings: ['','Student','','Java Developer','','Software Developer','', 'Back-end Developer'],
     typeSpeed: 50,
     backSpeed: 50,
     loop:true
