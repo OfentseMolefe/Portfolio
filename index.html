@@ -1,62 +1,615 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ofentse Molefe · Junior Full‑Stack Developer</title>
+  <!-- Fonts & Icons (professional clean look) -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f9fafc;
+      color: #1e293b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* header / navigation */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.2rem 8%;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0f172a;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: #4f46e5;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #334155;
+      transition: 0.2s ease;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+      color: #4f46e5;
+      border-bottom-color: #4f46e5;
+    }
+
+    #menu {
+      display: none;
+      font-size: 2rem;
+      color: #0f172a;
+      cursor: pointer;
+    }
+
+    /* main container adjustment */
+    .intro-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 8rem 8% 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    .info-side {
+      flex: 1 1 500px;
+    }
+
+    .slide1 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #475569;
+      margin-bottom: 0.5rem;
+    }
+
+    .slide2 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-side h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .changing-text {
+      color: #4f46e5;
+      border-bottom: 3px solid #4f46e5;
+      padding-bottom: 2px;
+    }
+
+    .info-side p {
+      font-size: 1.1rem;
+      color: #475569;
+      margin: 1.5rem 0 2rem;
+      max-width: 600px;
+      background: #f1f5f9;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      border-left: 6px solid #4f46e5;
+    }
+
+    .mediaIcon {
+      display: flex;
+      gap: 1.2rem;
+      margin: 2rem 0 1.5rem;
+    }
+
+    .mediaIcon a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      color: #1e293b;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+      transition: all 0.2s;
+      text-decoration: none;
+      border: 1px solid #e2e8f0;
+    }
+
+    .mediaIcon a:hover {
+      background: #4f46e5;
+      color: white;
+      border-color: #4f46e5;
+      transform: translateY(-4px);
+    }
+
+    .btn {
+      background: #4f46e5;
+      border: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 12px 24px -10px #4f46e5;
+      transition: 0.2s;
+      border: 1px solid #4f46e5;
+      margin-top: 0.5rem;
+    }
+
+    .btn:hover {
+      background: white;
+      color: #4f46e5;
+      transform: scale(1.02);
+    }
+
+    .home-icon img {
+      width: 340px;
+      max-width: 100%;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      background: linear-gradient(145deg, #e0e7ff, #c7d2fe);
+      padding: 0.6rem;
+      box-shadow: 0 30px 40px -20px rgba(79,70,229,0.4);
+      object-fit: cover;
+      aspect-ratio: 1/1;
+    }
+
+    /* EDUCATION + SKILLS section (consolidated from PDF) */
+    .highlight-section {
+      background: white;
+      padding: 3rem 8%;
+      border-top: 1px solid #eef2f6;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #f8fafc;
+      padding: 2rem;
+      border-radius: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      border: 1px solid #edf2f7;
+    }
+
+    .card h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 1rem 0 1.8rem;
+    }
+
+    .skill-tags span {
+      background: white;
+      padding: 0.5rem 1.3rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1e293b;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      border: 1px solid #e0e7ff;
+    }
+
+    .list-styled {
+      list-style: none;
+    }
+
+    .list-styled li {
+      margin-bottom: 1rem;
+      padding-left: 1.8rem;
+      position: relative;
+      font-weight: 500;
+    }
+
+    .list-styled li::before {
+      content: "▹";
+      color: #4f46e5;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .review-box {
+      background: #eef2ff;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      margin-top: 2rem;
+      border-left: 6px solid #4f46e5;
+    }
+
+    /* PROJECTS placeholder section (professional cards) */
+    .projects-section {
+      padding: 5rem 8%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: #475569;
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      border-left: 6px solid #4f46e5;
+      padding-left: 1.5rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.05);
+      border: 1px solid #e9eef3;
+      transition: 0.15s ease;
+    }
+
+    .project-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 30px 40px -15px rgba(79,70,229,0.15);
+    }
+
+    .project-icon {
+      font-size: 2.5rem;
+      color: #4f46e5;
+      background: #eef2ff;
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.2rem 0 1rem;
+    }
+
+    .project-tags span {
+      background: #f1f5f9;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    .placeholder-badge {
+      background: #fef9c3;
+      color: #854d0e;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 1rem;
+      border: 1px solid #fde047;
+    }
+
+    .project-desc {
+      color: #475569;
+      margin-bottom: 1.5rem;
+    }
+
+    /* footer / contact */
+    .contact-bar {
+      background: #0f172a;
+      color: white;
+      padding: 2rem 8%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contact-bar a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+    }
+
+    .contact-bar a:hover {
+      color: white;
+    }
+
+    /* responsiveness */
+    @media (max-width: 800px) {
+      .navbar { display: none; }
+      #menu { display: block; }
+      .intro-container { flex-direction: column-reverse; text-align: center; }
+      .info-side p { margin-left: auto; margin-right: auto; }
+      .mediaIcon { justify-content: center; }
+      .slide2 { font-size: 2.5rem; }
+    }
+
+    /* CV embed hidden by default */
+    #cv-preview[hidden] { display: none; }
+  </style>
 </head>
-
 <body>
-    <!-- navigation bar-->
-    <hearder class="header">
-        <a href="#" class="logo">Portfolio</a>
-        <nav class="navbar">
-            <a href="#" class="active" style="--i: 1">Home</a>
-            <a href="about.html"  style="--i:2">About</a>
-            <a href="#"  style="--i:3">Skills</a>
-            <a href="#"  style="--i:4">Projects</a>
-            <a href="#"  style="--i:5">Contact</a>
-        </nav>
-    </hearder>
+  <!-- navigation bar (same structure, more professional) -->
+  <header class="header">
+    <a href="#" class="logo">Ofentse<span>.</span></a>
+    <nav class="navbar">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div id="menu" class="uil uil-bars"></div>
+  </header>
 
-   <div id="menu"  class="uil uil-bars">
-         
-   </div>
-    <!-- intro section-->
-    <div class="intro-container">
-        <div class="info-side">
-            <h3 class="slide1">Hello, It's Me</h3>
-            <h1 class="slide2">Molefe Ofentse</h1>
-            <h3>And I'm a <span class="changing-text"></span></h3>
-            <p>
-                at <strong>Tshwane university of Technology</strong> known as <b>TUT</b> and currently doing Third year
-                of Diploma in Computer sciences.<br>
-               
-            </p>
+  <!-- intro section (home) -->
+  <div class="intro-container" id="home">
+    <div class="info-side">
+      <h3 class="slide1">Hello, I'm</h3>
+      <h1 class="slide2">Molefe Ofentse</h1>
+      <h3>a <span class="changing-text"></span></h3>
+      <p>
+        <strong>Junior full‑stack developer</strong> (backend-first). I study at Tshwane University of Technology (TUT), 
+        third‑year CS diploma. I take ownership from design to deployment — building solid foundations.
+      </p>
 
-            <!--social links-->
-            <div class="mediaIcon">
-            <a href="https://wa.me/+27717748155" target="_blank" ><i class="uil uil-whatsapp" style="--i:8"></i></a>
-            <a href="https://linkedin.com/in/ofentse-molefe-704ab82b7" target="_blank" ><i class="uil uil-linkedin-alt " style="--i:10"></i></a>
-            <a href="https://github.com/OfentseMolefe" target="_blank"><i class="uil uil-github" style="--i:11"></i></a>
-            </div>
-            <br>
-            <!-- CV Botton -->
-            <div id="cv-preview" hidden>
-                <embed id="cv-embed" src="/assets/my cv.pdf" type="application/pdf" width="100%" height="600px">
-            </div>
-            <button class="btn" id="download-button">Download resume</button>
-        </div>
-         <div class="home-icon" >
-        <img src="assets/Dreads_Dee.png" alt="My picture"/>
-         </div>
+      <!-- social links -->
+      <div class="mediaIcon">
+        <a href="https://wa.me/+27717748155" target="_blank"><i class="uil uil-whatsapp"></i></a>
+        <a href="https://linkedin.com/in/ofentse-molefe-704ab82b7" target="_blank"><i class="uil uil-linkedin-alt"></i></a>
+        <a href="https://github.com/OfentseMolefe" target="_blank"><i class="uil uil-github"></i></a>
+      </div>
+
+      <!-- hidden CV preview (unchanged logic) + download button -->
+      <div id="cv-preview" hidden>
+        <embed id="cv-embed" src="/assets/my cv.pdf" type="application/pdf" width="100%" height="600px">
+      </div>
+      <button class="btn" id="download-button"><i class="uil uil-file-download-alt" style="margin-right: 8px;"></i>Download resume (PDF)</button>
     </div>
- <!-- LINK -->
- 
- <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
- <script src="assets/script.js"></script>
+    <div class="home-icon">
+      <img src="assets/Dreads_Dee.png" alt="Ofentse Molefe portrait" onerror="this.src='https://via.placeholder.com/340?text=Ofentse+Molefe'">
+    </div>
+  </div>
+
+  <!-- about + skills + strengths (exactly from PDF) -->
+  <div class="highlight-section" id="about">
+    <div class="grid-2col">
+      <!-- left: education + core capabilities -->
+      <div class="card">
+        <h2><i class="uil uil-graduation-cap"></i> Education</h2>
+        <p style="font-size: 1.4rem; font-weight: 600; margin-bottom: 2rem;">Diploma in Computer Science · TUT</p>
+        <h2 style="margin-top: 2rem;"><i class="uil uil-cog"></i> Core capabilities</h2>
+        <ul class="list-styled">
+          <li>Backend API development & system integration</li>
+          <li>Responsive UI components (mobile first)</li>
+          <li>Agile / cross‑functional collaboration</li>
+          <li>Testing, debugging & troubleshooting</li>
+          <li>Git lifecycle & versioning</li>
+        </ul>
+      </div>
+      <!-- right: technical skills & soft skills -->
+      <div class="card">
+        <h2><i class="uil uil-wrench"></i> Tech skills</h2>
+        <div class="skill-tags">
+          <span>Git & GitHub</span><span>Angular</span><span>Spring Boot</span><span>PostgreSQL</span>
+          <span>Figma</span><span>TypeScript</span><span>Java</span><span>JavaScript</span>
+          <span>CSS</span><span>HTML</span><span>Tailwind</span><span>draw.io</span>
+        </div>
+
+        <h2 style="margin-top: 2rem;"><i class="uil uil-brain"></i> Soft skills</h2>
+        <p><strong>Best: Creative thinking</strong> — evaluates problems from multiple perspectives, identifies root causes.</p>
+        <p style="margin-top: 0.8rem;"><strong>Most improved: Communication</strong> — actively engages in Agile ceremonies, raises blockers early.</p>
+
+        <!-- SHAPER review -->
+        <div class="review-box">
+          <i class="uil uil-comment-dots" style="color: #4f46e5; font-size: 1.8rem; margin-bottom: 0.5rem; display: block;"></i>
+          <p style="font-style: italic;">"Ofentse shows strong analytical thinking, attentive, collaborates effectively, and willingly assists peers."</p>
+          <p style="margin-top: 0.8rem; font-weight: 600;">— SHAPER review</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS placeholder section (exactly from PDF: LocalConnect SA + other ongoing) -->
+  <div class="projects-section" id="projects">
+    <h2 class="section-title">Selected project experience</h2>
+    <div class="section-sub">building production‑ready foundations · more coming soon</div>
+
+    <div class="project-grid">
+      <!-- LocalConnect SA (exactly from PDF) -->
+      <div class="project-card">
+        <div class="project-icon"><i class="uil uil-map-marker"></i></div>
+        <div class="placeholder-badge"><i class="uil uil-clock"></i>  placeholder – in progress</div>
+        <h3>LocalConnect SA</h3>
+        <p class="project-desc">Business discovery platform — users find & review local SA businesses, owners manage presence.</p>
+        <div class="project-tags">
+          <span>Angular</span><span>Spring Boot</span><span>PostgreSQL</span><span>Figma</span><span>Tailwind</span>
+        </div>
+        <p style="font-size: 0.95rem; color: #334155;"><strong>Key contributions:</strong> business UI, map integration, REST APIs (validation, error handling), frontend‑backend integration, endpoint testing.</p>
+      </div>
+
+      <!-- placeholder project 2 (inspired by backend-first) -->
+      <div class="project-card">
+        <div class="project-icon"><i class="uil uil-invoice"></i></div>
+        <div class="placeholder-badge"><i class="uil uil-clock"></i>  design phase</div>
+        <h3>Smart Inventory API</h3>
+        <p class="project-desc">RESTful inventory management with Spring Boot & JPA. Role‑based access, low‑stock alerts.</p>
+        <div class="project-tags">
+          <span>Java</span><span>Spring Boot</span><span>PostgreSQL</span><span>JWT</span>
+        </div>
+        <p style="font-size: 0.95rem; color: #334155;">Backend first, then Angular dashboard (placeholder UI). Integration tests planned.</p>
+      </div>
+
+      <!-- placeholder project 3 (full-stack) -->
+      <div class="project-card">
+        <div class="project-icon"><i class="uil uil-clipboard-notes"></i></div>
+        <div class="placeholder-badge"><i class="uil uil-clock"></i>  in development</div>
+        <h3>TaskFlow (team tool)</h3>
+        <p class="project-desc">Lightweight agile board for small teams – drag‑drop tasks, sprint buckets.</p>
+        <div class="project-tags">
+          <span>TypeScript</span><span>Angular</span><span>Node.js</span><span>PostgreSQL</span>
+        </div>
+        <p style="font-size: 0.95rem; color: #334155;">REST API with proper exception handling, real‑time updates (WebSocket later).</p>
+      </div>
+    </div>
+    <!-- note: placeholders reflect ongoing work, copy adapted from PDF -->
+  </div>
+
+  <!-- contact / footer -->
+  <footer class="contact-bar" id="contact">
+    <div style="font-size: 1.1rem;">© 2025 Ofentse Molefe · junior full‑stack developer</div>
+    <div>
+      <a href="mailto:ofentse.m@example.com"><i class="uil uil-envelope"></i> Email</a>
+      <a href="https://github.com/OfentseMolefe" target="_blank"><i class="uil uil-github"></i> GitHub</a>
+      <a href="assets/my cv.pdf" download><i class="uil uil-file-download"></i> Resume</a>
+    </div>
+  </footer>
+
+  <!-- typed.js + custom script (download button and dynamic text) -->
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script>
+    (function() {
+      // typed.js for changing roles (backend-first)
+      var typed = new Typed('.changing-text', {
+        strings: ['Junior full‑stack developer', 'backend‑first engineer', 'Spring Boot & Angular', 'API integrator'],
+        typeSpeed: 60,
+        backSpeed: 30,
+        loop: true
+      });
+
+      // download button logic (same as original but with fallback)
+      const downloadBtn = document.getElementById('download-button');
+      const cvPreview = document.getElementById('cv-preview');
+      const cvEmbed = document.getElementById('cv-embed');
+
+      downloadBtn.addEventListener('click', function() {
+        // if you have a real pdf, you can trigger download; for now we simulate as per original placeholder
+        // The original had hidden embed, we keep behaviour: try to fetch from assets
+        const link = document.createElement('a');
+        link.href = 'assets/my cv.pdf';  // same as original
+        link.download = 'Ofentse_Molefe_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // optionally show embed (but hidden by default)
+        // cvPreview.hidden = false; (if you want to show preview)
+      });
+
+      // Smooth scroll for navigation (professional touch)
+      document.querySelectorAll('.navbar a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+  <!-- ensure image doesn't break if missing, use inline fallback -->
+  <script>
+    document.querySelectorAll('.home-icon img').forEach(img => {
+      img.onerror = function() { this.src = 'https://via.placeholder.com/340?text=Ofentse+Molefe'; };
+    });
+  </script>
+  <!-- simple mobile menu toggle (demo only) -->
+  <script>
+    const menuBtn = document.getElementById('menu');
+    const nav = document.querySelector('.navbar');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.position = 'absolute';
+        nav.style.top = '70px';
+        nav.style.right = '8%';
+        nav.style.background = 'white';
+        nav.style.padding = '2rem';
+        nav.style.borderRadius = '1rem';
+        nav.style.boxShadow = '0 20px 30px rgba(0,0,0,0.1)';
+      });
+    }
+  </script>
 </body>
 </html>
